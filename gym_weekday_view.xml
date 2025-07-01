@@ -1,0 +1,23 @@
+<odoo>
+    <record id="weekday_monday" model="gym.weekday">
+        <field name="name">Monday</field>
+    </record>
+    <record id="weekday_tuesday" model="gym.weekday">
+        <field name="name">Tuesday</field>
+    </record>
+    <record id="weekday_wednesday" model="gym.weekday">
+        <field name="name">Wednesday</field>
+    </record>
+    <record id="weekday_thursday" model="gym.weekday">
+        <field name="name">Thursday</field>
+    </record>
+    <record id="weekday_friday" model="gym.weekday">
+        <field name="name">Friday</field>
+    </record>
+    <record id="weekday_saturday" model="gym.weekday">
+        <field name="name">Saturday</field>
+    </record>
+    <record id="weekday_sunday" model="gym.weekday">
+        <field name="name">Sunday</field>
+    </record>
+</odoo>

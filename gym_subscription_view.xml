@@ -1,0 +1,66 @@
+<odoo>
+    <record id="gym_subscription_action" model="ir.actions.act_window">
+        <field name="name">gym_subscription</field>
+        <field name="res_model">gym.subscription</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+     <menuitem
+        id="gym_subscription_menu_item"
+        name="gym subscription"
+        parent="gym_subscription_menu"
+        action="gym_subscription_action"
+    />
+
+     <record id="gym_subscription_view" model="ir.ui.view">
+        <field name="name">gym_subscription_tree</field>
+        <field name="model">gym.subscription</field>
+        <field name="arch" type="xml">
+            <tree >
+                <field name="member_id"/>
+                <field name="trainer_id"/>
+                <field name="subscription_type"/>
+                <field name="start_date"/>
+                <field name="end_date" readonly="1"/>
+                <field name="duration" readonly="1"/><field name="price"/>
+                <field name="state"/>
+                <field name="available_days" widget="many2many_tags" readonly="1"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="gym_subscription_view_form" model="ir.ui.view">
+        <field name="name">gym_subscription_form</field>
+        <field name="model">gym.subscription</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+
+
+                    </header>
+
+                    <group>
+                        <field name="member_id"/>
+                        <field name="trainer_id"/>
+                        <field name="subscription_type"/>
+                        <field name="start_date"/>
+                        <field name="end_date" readonly="1"/>
+                        <field name="duration" readonly="1"/>
+                        <field name="price"/>
+                        <field name="state"/>
+                        <field name="available_days" widget="many2many_tags" readonly="1"/>
+
+
+                    </group>
+
+                </sheet>
+
+
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

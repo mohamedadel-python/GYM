@@ -1,0 +1,108 @@
+<odoo>
+
+    <!-- الـ action بواحد فقط -->
+     <record id="gym_member_action" model="ir.actions.act_window">
+        <field name="name">Gym Members</field>
+        <field name="res_model">gym.member</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('view_gym_member_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('gym_member_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('gym_member_view_form')})]"/>
+     </record>
+
+
+     <menuitem
+        id="gym_member_menu_item"
+        name="gym member"
+        parent="gym_member_menu"
+        action="gym_member_action"
+    />
+
+     <record id="gym_member_view" model="ir.ui.view">
+        <field name="name">gym_member_tree</field>
+        <field name="model">gym.member</field>
+        <field name="arch" type="xml">
+            <tree >
+                <field name="id"/>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="phone"/>
+                <field name="subscription_type"/>
+                <field name="start_date"/>
+                <field name="subscription_duration"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="gym_member_view_form" model="ir.ui.view">
+        <field name="name">gym_member_form</field>
+        <field name="model">gym.member</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+
+
+                    </header>
+                    <div>
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                               <field name="age"/>
+                               <field name="phone"/>
+                               <field name="subscription_type"/>
+                        </group>
+                        <group>
+                              <field name="start_date"/>
+                              <field name="subscription_duration"/>
+                              <field name="image" widget="image" class="oe_avatar" />
+
+                        </group>
+                    </group>
+
+                </sheet>
+
+
+            </form>
+        </field>
+    </record>
+
+    <record id="ir_check_end_date" model="ir.cron">
+    <field name="name">property: check_end_date</field>
+    <field name="model_id" ref="model_gym_member"/>
+    <field name="state">code</field>
+    <field name="code">model.check_end_date()</field>
+    <field name="interval_number">1</field>
+    <field name="interval_type">days</field>
+    <field name="numbercall">-1</field>
+    <field name="active" >True</field>
+   </record>
+    <record id="view_gym_member_kanban" model="ir.ui.view">
+        <field name="name">gym.member.kanban</field>
+        <field name="model">gym.member</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                            <img t-att-src="'data:image/png;base64,%s' % (record.image_1920 or '')"
+                             style="max-width: 200px; max-height: 100px; border-radius: 50%; margin-bottom: 10px;"/>
+                            <strong><field name="name"/></strong>
+                            <div>Subscription type: <field name="subscription_type"/></div>
+                            <div>Subscription period: <field name="subscription_duration"/> days</div>
+                            <div>Start date: <field name="start_date"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+</odoo>

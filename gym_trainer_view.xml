@@ -1,0 +1,67 @@
+<odoo>
+    <record id="gym_trainer_action" model="ir.actions.act_window">
+        <field name="name">gym_trainer</field>
+        <field name="res_model">gym.trainer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+     <menuitem
+        id="gym_trainer_menu_item"
+        name="gym trainer"
+        parent="gym_trainer_menu"
+        action="gym_trainer_action"
+    />
+
+     <record id="gym_trainer_view" model="ir.ui.view">
+        <field name="name">gym_trainer_tree</field>
+        <field name="model">gym.trainer</field>
+        <field name="arch" type="xml">
+            <tree >
+                <field name="id"/>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="phone"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="gym_trainer_view_form" model="ir.ui.view">
+        <field name="name">gym_trainer_form</field>
+        <field name="model">gym.trainer</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+
+
+                    </header>
+                    <div>
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                               <field name="age"/>
+                               <field name="phone"/>
+                        </group>
+                        <group>
+
+
+                              <field name="image" widget="image" class="oe_avatar" />
+                              <field name="available_days" widget="many2many_tags"/>
+
+
+                        </group>
+                    </group>
+
+                </sheet>
+
+
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,23 @@
+<odoo>
+<menuitem
+        id="gym_member_root_menu"
+        name="gym_member"
+
+/>
+<menuitem
+        id="gym_member_menu"
+        name="gym member"
+       parent="gym_member_root_menu"
+        />
+
+<menuitem
+        id="gym_trainer_menu"
+        name="gym trainer"
+       parent="gym_member_root_menu"
+/>
+<menuitem
+        id="gym_subscription_menu"
+        name="subscription"
+       parent="gym_member_root_menu"
+/>
+</odoo>
